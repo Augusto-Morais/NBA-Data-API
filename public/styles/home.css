@@ -1,0 +1,168 @@
+/* #Logo{
+    white-space: nowrap;
+    display: inline-block;
+    margin-left: 35em;
+    left: 17em;
+    height: 14em;
+    width: 22em;
+    
+} */
+
+h1 {
+  font-family: "Inter", sans-serif;
+  text-align: center;
+}
+
+#TitleS {
+  margin: 0.5em 1em 1.8em;
+}
+
+h2 {
+  font-family: "Open Sans", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#routes {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  /* margin: 0.6em auto;
+ */
+  /* gap: ; */
+}
+
+#routesBox {
+  margin: 1em 13em 2em;
+}
+
+#fetchH2 {
+  /* display: inline-block; */
+  /* margin: 1em auto; */
+  text-align: center;
+}
+
+#sampleCode {
+  /* display: inline-block; */
+  /* margin: 1em 40%; */
+  width: 23em;
+  margin: 1em auto;
+  /* text-align: center; */
+}
+
+#requestPanel {
+  width: 43.3em;
+  height: 39em;
+  margin: auto;
+  border: 0.1em solid rgba(12, 2, 100, 0.1);
+  background-color: rgba(179, 177, 189, 0.7);
+}
+
+#HTTPMethod {
+  margin: 0.8em;
+  font-family: "Source Code Pro", monospace;
+  font-size: 1.2em;
+  position: relative;
+  border: 0.1em solid rgba(12, 2, 100, 0.1);
+  border-radius: 0.5em;
+  color: rgba(38, 97, 207, 0.7);
+  /* top: 0.1em; */
+  /* background-color: ; */
+}
+
+#URL {
+  /* display: inline-block; */
+  width: 30em;
+  height: 2em;
+  border: 0.1em solid rgba(12, 2, 100, 0.1);
+  border-radius: 0.5em;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: white;
+  /* color: rgba(38, 97, 207, 0.7); */
+  /* bottom: 0.4em; */
+  /* top: 0.7em; */
+  /* vertical-align: middle; */
+  /* vertical-align: baseline; */
+  position: relative;
+  /* bottom: 30em; */
+  left: 0.3em;
+  bottom: 0.1em;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.1mm;
+  padding-left: 0.5em;
+}
+
+#submit {
+  position: relative;
+  bottom: 0.1em;
+  right: 0.5em;
+  /* margin-left: 1.8em; */
+  width: 5em;
+  height: 2.4em;
+  border: 0.1em solid rgba(12, 2, 100, 0.1);
+  background-color: rgb(68, 177, 91);
+  border-radius: 0.5em;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  color: white;
+  cursor: pointer;
+  font-family: "Source Code Pro", monospace;
+
+  /* font-size: 1.1em; */
+}
+
+#reqBodyLabel {
+  font-family: "Source Code Pro", monospace;
+
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+  display: block;
+}
+
+#reqBody {
+  margin-left: 1em;
+  border: 0.1em solid rgba(12, 2, 100, 0.1);
+  border-radius: 0.5em;
+  background-color: white;
+  resize: none;
+  padding: 0.4em;
+  width: 49em;
+}
+
+[contentEditable="true"]:empty:not(:focus):before {
+  content: attr(data-text);
+}
+
+#responseLabel {
+  font-family: "Source Code Pro", monospace;
+  margin-top: 0;
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+}
+
+#response {
+  margin-left: 1em;
+  width: 40.5em;
+  height: 17em;
+  padding: 0.4em;
+  border: 0.1em solid rgba(12, 2, 100, 0.1);
+  background-color: white;
+  border-radius: 0.5em;
+  overflow-y: auto;
+  overflow-x: auto;
+  font-family: 'Encode Sans Semi Expanded', sans-serif;
+}
+/* 
+#Testing{
+    margin-left: 1em;
+    padding: 0.3em  ;
+    width: 10em;
+    height: 5em;
+    border: 0.1em solid rgba(12, 2, 100, 0.1);
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+
+} */

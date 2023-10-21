@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/homeHead.ejs") -%>
+  </head>
+  <body>
+    <!-- <img src="/images/NBALogo.png" alt="NBA Logo"  id="Logo"> -->
+    <h1>NBA API</h1>
+    <hr id="TitleS" />
+
+    <div id="routesBox">
+      <div id="routes">
+        <div id="TeamsRoutesBox">
+          <h2>Teams Routes</h2>
+          <ul id="TeamsRoutes">
+            <li>
+              <pre><code>get - /teams</code></pre>
+            </li>
+            <li>
+              <pre><code>get - /teams/:id</code></pre>
+            </li>
+            <li>
+              <pre><code>post - /teams (request body is required)</code></pre>
+            </li>
+            <li>
+              <pre><code>put - /teams/:id (request body is required)</code></pre>
+            </li>
+            <li>
+              <pre><code>delete - /teams/:id</code></pre>
+            </li>
+          </ul>
+        </div>
+
+        <div id="PlayersRoutesBox">
+          <h2>Players Routes</h2>
+          <ul id="PlayersRoutes">
+            <li>
+              <pre><code>get - /players</code></pre>
+            </li>
+            <li>
+              <pre><code>get - /players/:id</code></pre>
+            </li>
+            <li>
+              <pre><code>post - /players (request body is required)</code></pre>
+            </li>
+            <li>
+              <pre><code>put - /players/:id (request body is required)</code></pre>
+            </li>
+            <li>
+              <pre><code>delete - /players/:id</code></pre>
+            </li>
+          </ul>
+        </div>
+
+        <div id="PlayerStatsRoutesBox">
+          <h2>Players Routes</h2>
+          <ul id="PlayerStatsRoutes">
+            <li>
+              <pre><code>get - /players/:id/stats</code></pre>
+            </li>
+            <li>
+              <pre><code>get - /players/:id/stats/:year (Ex: 2010-11)</code></pre>
+            </li>
+            <li>
+              <pre><code>post - /players/:id/stats (request body is required)</code></pre>
+            </li>
+            <li>
+              <pre><code>put - /players/:id/stats/:year (request body is required)</code></pre>
+            </li>
+            <li>
+              <pre><code>delete - /players/:id/stats/:year</code></pre>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="requestPanel">
+      <form>
+        <select name="HTTPMethod" id="HTTPMethod">
+          <option value="GET">GET</option>
+          <option value="POST">POST</option>
+          <option value="PUT">PUT</option>
+          <option value="DELETE">DELETE</option>
+        </select>
+        <input type="text" name="URL" id="URL" placeholder="http://localhost:port/route">
+        <button type="submit" id="submit">SEND</button>
+        <label for="reqBody" id="reqBodyLabel">Body (JSON)</label>
+        <textarea spellcheck="false" name="reqBody" id="reqBody" cols="30" rows="10" placeholder='{\n\t"Key":"value"\n}'></textarea>
+        <!-- <div contenteditable="true" id="Testing" spellcheck="false" data-text="some"></div> -->
+        <p id="responseLabel">Response</p>
+        <div id="response"></div>
+
+      </form>
+      <!-- <span>Send</span> -->
+    </div>
+
+    <h2 id="fetchH2">Using the Javascript Fetch API:</h2>
+
+    <!-- HTML generated using hilite.me -->
+    <div id="sampleCode"
+      style="
+        background: #000000;
+        overflow: auto;
+        border: solid gray;
+        border-width: 0.1em 0.1em 0.1em 0.8em;
+        padding: 0.2em 0.6em;
+      "
+    >
+      <table >
+        <tr>
+          <td>
+            <pre style="margin: 0; line-height: 125%; color: gray;">
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre
+            >
+          </td>
+          <td>
+            <pre
+              style="margin: 0; line-height: 125%"
+            ><span style="color: #cdcd00">const</span> <span style="color: #cccccc">route</span> <span style="color: #3399cc">=</span> <span style="color: #cd0000">&quot;http://localhost:PORT/route&quot;</span><span style="color: #cccccc">;</span>
+
+    <span style="color: #cdcd00">const</span> <span style="color: #cccccc">options</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">{</span>
+        <span style="color: #cccccc">method</span><span style="color: #3399cc">:</span> <span style="color: #cd0000">&quot;GET&quot;</span><span style="color: #cccccc">,</span>
+        <span style="color: #cccccc">headers</span><span style="color: #3399cc">:</span> <span style="color: #cccccc">{</span>
+            <span style="color: #cd0000">&#39;Content-Type&#39;</span><span style="color: #3399cc">:</span> <span style="color: #cd0000">&#39;application/json&#39;</span>
+        <span style="color: #cccccc">},</span>
+        <span style="color: #cccccc">body</span><span style="color: #3399cc">:</span> <span style="color: #cd0000">&#39;{&quot;Key&quot;:&quot;Value&quot;}&#39;</span>
+    <span style="color: #cccccc">};</span>
+    
+
+    <span style="color: #cccccc">fetch(route,options)</span>
+    <span style="color: #cccccc">.then(data</span> <span style="color: #3399cc">=&gt;</span> <span style="color: #cccccc">{</span><span style="color: #cdcd00">return</span> <span style="color: #cccccc">data.json()})</span>
+    <span style="color: #cccccc">.then(result</span> <span style="color: #3399cc">=&gt;</span> <span style="color: #cccccc">console.log(result))</span>
+    <span style="color: #cccccc">.</span><span style="color: #cdcd00">catch</span><span style="color: #cccccc">(error</span> <span style="color: #3399cc">=&gt;</span> <span style="color: #cccccc">console.log(error));</span>
+</pre>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- .get("/players/:id/stats",PlayersStatsController.getPlayerStats)
+.get("/players/:id/stats/:year", PlayerStatsController.getPlayerStatsByYear)
+.post("/players/:id/stats",PlayersStatsController.addPlayerStats)
+.put("/players/:id/stats/:year",PlayersStatsController.updatePlayerStats)
+.delete("/players/:id/stats/:year",PlayersStatsController.deletePlayerSeasonStats); -->
+  </body>
+</html>

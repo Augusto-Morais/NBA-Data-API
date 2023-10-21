@@ -4,6 +4,16 @@ import Team from "../models/Team.js";
 const dbInterface = new DBInterface;
 
 class TeamsController{
+    static appGetAllTeams = async (req, res) => {
+        dbInterface.initConnection();
+
+        const result = await dbInterface.getResultsFromQuery(`
+            SELECT * FROM team
+        `);
+
+        return result;
+    }
+
     static getAllTeams = async (req,res) => {
         dbInterface.initConnection();
 
@@ -25,7 +35,7 @@ class TeamsController{
             SELECT * FROM team WHERE TeamId=${id};
         `);
 
-        res.json(result[0]);
+        res.status(200).json(result);
 
         dbInterface.endConnnection();
     }

@@ -41,6 +41,7 @@ WHERE PlayerId=${id};`
     dbInterface.endConnnection();
   };
 
+  //Fix it =====
   static getPlayerStatsByYear = async (req, res) => {
     const id = req.params.id;
     const year = req.params.year;
@@ -69,7 +70,7 @@ INNER JOIN team ON playerstats.TeamId=team.TeamId
 WHERE PlayerId=${id}
 AND Year='${year}';`
     );
-    console.log(year);
+    // console.log(year);
 
     const result = {
       PlayerName: playerName[0].Name,
@@ -138,7 +139,7 @@ AND Year='${year}';`
     dbInterface.initConnection();
 
     const result = await dbInterface.getResultsFromQuery(
-      `UPDATE playerstats SET Year='${updatedPlayerStats.Year}', TeamId=${updatedPlayerStats.TeamId}, GamesPlayed=${updatedPlayerStats.GamesPlayed}, GamesStarted=${updatedPlayerStats.GamesStarted},
+      `UPDATE playerstats SET Year='${updatedPlayerStats.Year}', TeamId=${updatedPlayerStats.TeamId}, GamesPLayed=${updatedPlayerStats.GamesPlayed}, GamesStarted=${updatedPlayerStats.GamesStarted},
         PPG=${updatedPlayerStats.PPG}, RPG=${updatedPlayerStats.RPG}, APG=${updatedPlayerStats.APG}, SPG=${updatedPlayerStats.SPG}, BPG=${updatedPlayerStats.BPG}, FGP=${updatedPlayerStats.FGP}, TPP=${updatedPlayerStats.TPP}, 
         FTP=${updatedPlayerStats.FTP} WHERE PlayerId=${id} AND Year='${year}';`
     );
