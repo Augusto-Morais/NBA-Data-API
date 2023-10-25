@@ -16,35 +16,35 @@ function setUpBodyReqInput() {
   if (HTTPMethod == "POST") {
     if (/players\/$/.test(route) || /players$/.test(route)) {
       document.getElementById("reqBody").value = `{
-      "Name" : "PlayerName",
-      "Position" : "AP",
+      "Name" : "varchar(65)",
+      "Position" : "varchar(2)",
       "DateOfBirth" : "dd-mm-yyyy" 
 }
       `;
     } else if (/teams\/$/.test(route) || /teams$/.test(route)) {
       document.getElementById("reqBody").value = `{
-      "Name" : "TeamName",
-      "Championships" : "AP",
-      "Conference" : "W|E",
-      "Division": "P"
+        "Name" : "varchar(50)",
+        "Championships" : "int",
+        "Conference" : "varchar(1)",
+        "Division": "varchar(2)"
 }`;
     } else if (
       /players\/\d{1,2}\/stats$/.test(route) ||
       /players\/\d{1,2}\/stats\/$/.test(route)
     ) {
       document.getElementById("reqBody").value = `{
-        "Year" : "",
-        "TeamId" : "",
-        "GamesPlayed" : "",
-        "GamesStarted" : "",
-        "PPG" : "",
-        "RPG" : "",
-        "APG" : "",
-        "SPG" : "",
-        "BPG" : "",
-        "FGP" : "",
-        "TPP" : "",
-        "FTP" : ""
+        "Year" : "Ex: 2015-16",
+        "TeamId" : "int",
+        "GamesPlayed" : "int",
+        "GamesStarted" : "int",
+        "PPG" : "float",
+        "RPG" : "float",
+        "APG" : "float",
+        "SPG" : "float",
+        "BPG" : "float",
+        "FGP" : "float",
+        "TPP" : "float",
+        "FTP" : "float"
 }`;
     } else {
       document.getElementById("reqBody").value = "";
@@ -52,9 +52,9 @@ function setUpBodyReqInput() {
   } else if (HTTPMethod == "PUT") {
     if (/players\/\d{1,2}$/.test(route) || /players\/\d{1,2}\/$/.test(route)) {
       document.getElementById("reqBody").value = `{
-      "Name" : "PlayerName",
-      "Position" : "AP",
-      "DateOfBirth" : "dd-mm-yyyy" 
+        "Name" : "varchar(65)",
+        "Position" : "varchar(2)",
+        "DateOfBirth" : "dd-mm-yyyy" 
 }
       `;
     } else if (
@@ -62,33 +62,33 @@ function setUpBodyReqInput() {
       /teams\/\d{1,2}\/$/.test(route)
     ) {
       document.getElementById("reqBody").value = `{
-        "Name" : "TeamName",
-        "Championships" : "AP",
-        "Conference" : "W|E",
-        "Division": "P"
+        "Name" : "varchar(50)",
+        "Championships" : "int",
+        "Conference" : "varchar(1)",
+        "Division": "varchar(2)"
 }`;
-    }else if( /players\/\d{1,2}\/stats\/\d{1,4}-\d{1,2}$/.test(route) ||
-    /players\/\d{1,2}\/stats\/\d{1,4}-\d{1,2}\/$/.test(route)){
+    } else if (
+      /players\/\d{1,2}\/stats\/\d{1,4}-\d{1,2}$/.test(route) ||
+      /players\/\d{1,2}\/stats\/\d{1,4}-\d{1,2}\/$/.test(route)
+    ) {
       document.getElementById("reqBody").value = `{
-        "Year" : "",
-        "TeamId" : "",
-        "GamesPlayed" : "",
-        "GamesStarted" : "",
-        "PPG" : "",
-        "RPG" : "",
-        "APG" : "",
-        "SPG" : "",
-        "BPG" : "",
-        "FGP" : "",
-        "TPP" : "",
-        "FTP" : ""
+        "Year" : "Ex: 2015-16",
+        "TeamId" : "int",
+        "GamesPlayed" : "int",
+        "GamesStarted" : "int",
+        "PPG" : "float",
+        "RPG" : "float",
+        "APG" : "float",
+        "SPG" : "float",
+        "BPG" : "float",
+        "FGP" : "float",
+        "TPP" : "float",
+        "FTP" : "float"
 }`;
-
     } else {
       document.getElementById("reqBody").value = "";
     }
-  }
-  else{
+  } else {
     document.getElementById("reqBody").value = "";
   }
 }

@@ -1,9 +1,9 @@
 import axios from "axios";
 import jsdom from "jsdom";
 import fs, { stat } from "fs";
-import teamsController from "./src/controllers/TeamsController.js";
-import playersController from "./src/controllers/PlayersController.js";
-import { log, table } from "console";
+import teamsController from "../controllers/TeamsController.js";
+import playersController from "../controllers/PlayersController.js"
+
 // ' = %27
 const teams = await teamsController.appGetAllTeams();
 const players = await playersController.appGetAllPlayers();
@@ -292,7 +292,7 @@ async function scrapeAndWritePlayerStats(url) {
         //   }
 
         fs.appendFileSync(
-          "./src/sql/testing.sql",
+          "../sql/testing.sql",
           `(${stats.playerId}, '${stats.year}', ${stats.teamId}, ${stats.gamesPlayed}, ${stats.gamesStarted}, ${stats.ppg}, ${stats.rpg}, ${stats.apg}, ${stats.spg}, ${stats.bpg}, ${stats.fgp}, ${stats.tpp}, ${stats.ftp}),\n`,
           "UTF-8"
         );
