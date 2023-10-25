@@ -128,18 +128,12 @@ document
     let part = URL.split("/");
     let route = part.slice(3).join("/");
 
-    // fetch(URL, options).
-    // then().catch(error => {
-    //   response.innerHTML = `<span style='color:red;'>${error.status}</span><br><span style='color:red;'>${error.message}</span>`;
-    // });
-
     try {
       const request = await fetch(URL, options);
 
       if (request.ok) {
         if (HTTPMethod == "GET") {
           alert(route + "|");
-          // /players/:id/stats/:year
           if (
             /players\/\d{1,2}$/.test(route) ||
             /players\/$/.test(route) ||
@@ -150,7 +144,6 @@ document
             /teams$/.test(route) ||
             /teams\/\d{1,2}\/$/.test(route)
           ) {
-            // alert('HERE')
             const data = await request.json();
 
             data.forEach((element) => {
@@ -216,7 +209,6 @@ document
           HTTPMethod == "DELETE"
         ) {
           const data = await request.json();
-          // response.innerHTML += data;
           response.innerHTML += `<pre><span style='color:black;'>{</span></pre>`;
           for (const key in data) {
             response.innerHTML += `<pre>                <span style='color:blue;'>"${key}"</span> : "${data[key]}",</pre>`;
