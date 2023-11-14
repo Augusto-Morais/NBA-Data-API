@@ -3,7 +3,6 @@
 A aplicação consiste em uma API CLIENT similar ao Postman, no qual o usuário, para enviar uma solicitação HTTP, deve preencher o campo de entrada especificando a rota desejada
 
 Por exepmlo: 
-https://dev.mysql.com/downloads/file/?id=523568
 
 
 
@@ -18,6 +17,17 @@ Liste as tecnologias (linguagens, ferramentas, bibliotecas) que você utilizou p
 
 Exemplo:
 * [NodeJS](https://nodejs.org/en)
+  </br></br>
+  Dependências:
+    - axios (web scraping)
+    - dotenv
+    - ejs
+    - express
+    - jsdom
+    - mysql12
+    - nodemon
+  </br>
+* [Express](https://expressjs.com/pt-br/)
 * [MySQL](https://www.mysql.com/)
 
 ## Dependências e Versões Necessárias
