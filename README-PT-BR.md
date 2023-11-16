@@ -86,6 +86,16 @@ Preenchimento das tabelas do, banco, de dados com estatísticas das temporadas r
       const value = dom.window.document.getElementsByClassName(
         "wikitable sortable "
       );
+
+    const regularSeasonTable = value.item(0);
+    ```
+  - O nome do jogador foi obtido fazendo algumas substiuições na string da URL
+    ```js
+    const playerName = url
+        .split("/")[4]
+        .replace("%27", "'")
+        .replace("_", " ")
+        .replace("_(basketball)","");
     ```
   
 
