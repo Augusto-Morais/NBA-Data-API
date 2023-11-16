@@ -75,7 +75,18 @@ Preenchimento das tabelas do, banco, de dados com estatísticas das temporadas r
 * Como solucionar:
   Usando o framework Axios e o jsdom, foi possível, por meio de URLs da wikipedia, obter essas informações:
   - No arquivo scraping.js (src/scraping/scraping.js), o document object model da página foi usado para obter a tabela de estatísicas de cada jogador
-    testando
+    por meio das classes atribuídas à ela .
+
+    
+    ```js
+    await axios
+    .get(url)
+    .then((response) => {
+      const dom = new jsdom.JSDOM(response.data);
+      const value = dom.window.document.getElementsByClassName(
+        "wikitable sortable "
+      );
+    ```
   
 
 ### Problema 2:
