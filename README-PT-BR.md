@@ -71,17 +71,17 @@ Para usar a aplicação, basta abrir o endereço exibido acima e inserir as rota
 ## Problemas enfrentados
 
 ### Problema 1:
-Preenchimento das tabelas do banco de dados com estatísticas das temporadas regulares dos jogadores e informações gerais sobre os times.
-* Como solucionar: 
-Com o 
+Preenchimento das tabelas do, banco, de dados com estatísticas das temporadas regulares dos jogadores e informações gerais sobre os times.
+* Como solucionar:
+  Usando o framework Axios e o jsdom, foi possível, por meio de URLs da wikipedia, obter essas informações:
+  - No arquivo scraping.js (src/scraping/scraping.js), o document object model da página foi usado para obter a tabela de estatísicas de cada jogador
+    testando
+  
 
 ### Problema 2:
 Descrição do problema
 * Como solucionar: explicar a solução.
 
-## Próximos passos
-
-Descreva se você pretende, pensou ou gostaria de elaborar uma nova feature para o seu projeto definindo os próximos passos.
 
 
 
