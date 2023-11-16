@@ -85,8 +85,6 @@ Ao iniciar a aplicação pela primeira vez, a criação do banco de dados e o pr
 
 ## Dependências e Versões Necessárias
 
-Liste as dependências necessárias para rodar o projeto e as versões que você utilizou.
-
 * [MySQL](https://dev.mysql.com/downloads/installer/) - Versão 8.0.35
 * [NodeJS](https://nodejs.org/en) - Versão 20.9.0
 
@@ -259,10 +257,143 @@ Preenchimento das tabelas do banco de dados com estatísticas das temporadas reg
   
 
 ### Problema 2:
-Descrição do problema
-* Como solucionar: explicar a solução.
+Formatação do painel de corpo de requisição e do painel de resposta em JSON.
+
+* Como solucionar:
+  Usando o objeto document, foi possível ober o conteúdo do input de rota para formatar o corpo da requisição em json (se necessário), além de exibir a resposta com a identação apropriada.
+- No arquivo formSetUp.js (public/scripts/), o método  ```setUpBodyReqInput()```  analisa a rota no campo de entrada, e realiza as formatações para cada caso específico:
+     
+  ```js
+     if (HTTPMethod == "POST") {
+    if (/players\/$/.test(route) || /players$/.test(route)) {
+      document.getElementById("reqBody").value = `{
+      "Name" : "varchar(65)",
+      "Position" : "varchar(2)",
+      "DateOfBirth" : "dd-mm-yyyy" 
+        }
+      `;
+    } else if (/teams\/$/.test(route) || /teams$/.test(route)) {
+      document.getElementById("reqBody").value = `{
+        "Name" : "varchar(50)",
+        "Championships" : "int",
+        "Conference" : "varchar(1)",
+        "Division": "varchar(2)"
+        }`;
+    } else if (
+      /players\/\d{1,2}\/stats$/.test(route) ||
+      /players\/\d{1,2}\/stats\/$/.test(route)
+    ) {
+      document.getElementById("reqBody").value = `{
+        "Year" : "Ex: 2015-16",
+        "TeamId" : "int",
+        "GamesPlayed" : "int",
+        "GamesStarted" : "int",
+        "PPG" : "float",
+        "RPG" : "float",
+        "APG" : "float",
+        "SPG" : "float",
+        "BPG" : "float",
+        "FGP" : "float",
+        "TPP" : "float",
+        "FTP" : "float"
+        }`;
+    } else {
+      document.getElementById("reqBody").value = "";
+    }
+  }
+  
+         ```
+A formatação para os outros tipos de método HTTP é similar ao trecho de código exibido acima
+
+### Problema 3:
+SQL query de 2 tabelas para exibir estatísticas de cada jogador corretamente.
+
+* Como solucionar:
+  Usando INNER JOIN entre as tabelas ```playerstats``` e ```team``` para obter as estatísticas do jogador, e o nome time com base no id do jogador e ano de temporada regular
+  ```sql
+      SELECT playerstats.Year,
+      team.Name AS Team,
+      playerstats.GamesPLayed,
+      playerstats.GamesStarted,
+      playerstats.PPG,
+      playerstats.RPG,
+      playerstats.APG,
+      playerstats.SPG,
+      playerstats.BPG,
+      playerstats.FGP,
+      playerstats.TPP,
+      playerstats.FTP
+      FROM playerstats
+      INNER JOIN team ON playerstats.TeamId=team.TeamId
+      WHERE PlayerId=${id}
+      AND Year=${year}
+  ```
+  
+### Problema 4:
+Interface de banco de dados de fácil uso para obter os resultados de queries, além garantir que o banco de dados tenha sido criado antes de realizar queries.
+
+* Como solucionar:
+  No arquivo dbConfig.js (src/db/), foi criado a classe ```DBInterface``` com a biblioteca ```mysql12``` e com as informações fornecidas no arquivo .env:
+  
+```js
+import mysql from "mysql2";
+import "dotenv/config";
 
 
+class DBInterface {
+  constructor() {
+    this.host = process.env.HOST;
+    this.user = process.env.USER;
+    this._password = process.env.PASSWORD;
+    this.con = null;
+  }
+
+  async initConnection() {
+    this.con = mysql.createConnection({
+      host: this.host,
+      user: this.user,
+      password: this._password,
+    });
+
+    this.con.connect((err) => {
+      if (err) console.log(err.message);
+      else console.log("Connected to Data Base");
+    });
+
+    this.getResultsFromQuery(`CREATE DATABASE IF NOT EXISTS nba;`);
+    this.getResultsFromQuery("USE nba");
+  }
+
+
+  endConnnection() {
+    this.con.end(function (err) {
+      if (err) {
+        console.log(err.message);
+      } else {
+        console.log("DB connection has been closed");
+      }
+    });
+  }
+  
+  async getResultsFromQuery(query) {
+    try {
+      const results = await this.con.promise().query(query);
+
+      return results[0];
+    } catch (error) {
+      console.log(`Error: ${error}`);
+      throw error;
+    }
+  }
+
+}
+
+export default DBInterface;
+
+```
+
+
+sas
 
 
 
