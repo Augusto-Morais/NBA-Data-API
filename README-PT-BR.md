@@ -70,13 +70,10 @@ Para usar a aplicação, basta abrir o endereço exibido acima e inserir as rota
 
 ## Problemas enfrentados
 
-Liste os problemas que você enfrentou construindo a aplicação e como você resolveu cada um deles. Você que desenvolveu o projeto é a pessoa que mais conhece/entende os possíveis problemas que uma pessoa pode enfrentar rodando a aplicação. Compartilhe esse conhecimento e facilite a vida da pessoa descrevendo-os.
-
-Exemplo:
-
 ### Problema 1:
-Descrição do problema
-* Como solucionar: explicar a solução.
+Preenchimento das tabelas do banco de dados com estatísticas das temporadas regulares dos jogadores e informações gerais sobre os times.
+* Como solucionar: 
+Com o 
 
 ### Problema 2:
 Descrição do problema
