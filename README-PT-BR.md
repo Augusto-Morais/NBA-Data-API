@@ -137,13 +137,124 @@ Preenchimento das tabelas do banco de dados com estatísticas das temporadas reg
 
     const regularSeasonTable = value.item(0);
     ```
-  - O nome do jogador foi obtido fazendo algumas substiuições na string da URL
+  - O nome do jogador foi obtido fazendo algumas substituições na string da URL
     ```js
     const playerName = url
         .split("/")[4]
         .replace("%27", "'")
         .replace("_", " ")
         .replace("_(basketball)","");
+    ```
+  - O ano de temporada regular foi obtido selecionando a primeira célula da tabela de estatísticas:
+      
+    ```js
+    const rows = regularSeasonTable.querySelectorAll("tr");
+      rows.forEach((row) => {
+        const stats = new Stats();
+        const cells = row.cells;
+
+        
+        stats.year = cells
+          .item(0)
+          .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")
+          .replace("–", "-");
+    ```
+  - As outras informações referentes às estatísticas do jogador foram obtidas da mesma maneira, mudando apenas o número da célula da tabela correspondente na wikipedia e substituindo os caracteres desnecessários:
+   
+    ```js
+    stats.gamesPlayed = cells
+          .item(2)
+          .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "");
+        stats.gamesStarted = cells
+          .item(3)
+          .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "");
+        stats.ppg = /\./.test(
+          cells
+            .item(cells.length - 1)
+            .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")[0]
+        )
+          ? "0".concat(
+              cells
+                .item(cells.length - 1)
+                .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")
+            )
+          : cells
+              .item(cells.length - 1)
+              .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")
+              .replace("\n", "");
+        stats.fgp = new Number(
+          cells.item(5).textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "") *
+            100
+        )
+          .toPrecision(3)
+          .toString();
+        stats.tpp = new Number(
+          cells.item(6).textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "") *
+            100
+        )
+          .toPrecision(3)
+          .toString();
+        stats.ftp = new Number(
+          cells.item(7).textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "") *
+            100
+        )
+          .toPrecision(3)
+          .toString();
+
+        stats.rpg = /\./.test(
+          cells.item(8).textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")[0]
+        )
+          ? "0".concat(
+              cells
+                .item(8)
+                .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")
+                .replace("\n", "")
+            )
+          : cells
+              .item(8)
+              .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")
+              .replace("\n", "");
+        stats.apg = /\./.test(
+          cells.item(9).textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")[0]
+        )
+          ? "0".concat(
+              cells
+                .item(9)
+                .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")
+                .replace("\n", "")
+            )
+          : cells
+              .item(9)
+              .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")
+              .replace("\n", "");
+        stats.spg = /\./.test(
+          cells.item(10).textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")[0]
+        )
+          ? "0".concat(
+              cells
+                .item(10)
+                .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")
+                .replace("\n", "")
+            )
+          : cells
+              .item(10)
+              .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")
+              .replace("\n", "");
+        stats.bpg = /\./.test(
+          cells.item(11).textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")[0]
+        )
+          ? "0".concat(
+              cells
+                .item(11)
+                .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")
+                .replace("\n", "")
+            )
+          : cells
+              .item(11)
+              .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")
+              .replace("\n", "");
+
+
     ```
   
 
