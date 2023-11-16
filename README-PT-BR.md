@@ -13,9 +13,6 @@ Ao iniciar a aplicação pela primeira vez, a criação do banco de dados e o pr
 
 ### Tecnologias Utilizadas
 
-Liste as tecnologias (linguagens, ferramentas, bibliotecas) que você utilizou para elaborar o projeto. Essa parte é importante para quando um recrutador (que não tem conhecimento de programação) acessar o seu projeto, ele vai saber só olhando a documentação quais tecnologias você já conhece!
-
-Exemplo:
 * [NodeJS](https://nodejs.org/en)
   </br></br>
   Dependências:
@@ -28,13 +25,14 @@ Exemplo:
     - nodemon
   </br>
 * [Express](https://expressjs.com/pt-br/)
-* [MySQL](https://www.mysql.com/)
+* [MySQL](https://dev.mysql.com/downloads/installer/)
 
 ## Dependências e Versões Necessárias
 
 Liste as dependências necessárias para rodar o projeto e as versões que você utilizou.
 
-* Docker - Versão: X.X
+* [MySQL](https://dev.mysql.com/downloads/installer/) - Versão 8.0.35
+* [NodeJS](https://nodejs.org/en) - Versão 20.9.0
 
 ### Como rodar o projeto
 
