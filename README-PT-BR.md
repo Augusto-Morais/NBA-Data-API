@@ -92,7 +92,7 @@ Ao iniciar a aplicação pela primeira vez, a criação do banco de dados e o pr
 
 1. Instale o [MySQL](https://dev.mysql.com/downloads/installer/) e o [NodeJS](https://nodejs.org/en/download). Ao iniciar o MySQL Installer, selecione o tipo de Setup 'Full'.
 
-2. Com o projeto aberto no seu editor de código-fonte,  preencha o arquivo .env com seus dados de acesso MySQL
+2. Com o projeto aberto no seu editor de código-fonte, preencha o arquivo .env com seus dados de acesso MySQL
 ```dosini
 PORT = 3000
 HOST = "localhost"
@@ -119,9 +119,9 @@ Para usar a aplicação, basta abrir o endereço exibido acima e inserir as rota
 ### Problema 1:
 Preenchimento das tabelas do banco de dados com estatísticas das temporadas regulares dos jogadores e informações gerais sobre os times.
 * Como solucionar:
-  Usando o framework Axios e o jsdom, foi possível, por meio de URLs da wikipedia, obter essas informações:
+  Usando o framework Axios e o jsdom, foi possível, por meio de URLs da wikipédia, obter essas informações:
   - No arquivo scraping.js (src/scraping/scraping.js), o document object model da página foi usado para obter a tabela de estatísicas de cada jogador
-    por meio das classes atribuídas à ela .
+    por meio das classes atribuídas à ela.
 
     
     ```js
@@ -157,7 +157,7 @@ Preenchimento das tabelas do banco de dados com estatísticas das temporadas reg
           .textContent.replace(/(†\n)|\n|\*|\[\w\]|(\*\n)/, "")
           .replace("–", "-");
     ```
-  - As outras informações referentes às estatísticas do jogador foram obtidas da mesma maneira, mudando apenas o número da célula da tabela correspondente na wikipedia e substituindo os caracteres desnecessários:
+  - As outras informações referentes às estatísticas do jogador foram obtidas da mesma maneira, mudando apenas o número da célula da tabela correspondente na wikipédia e substituindo os caracteres desnecessários:
    
     ```js
     stats.gamesPlayed = cells
@@ -260,7 +260,7 @@ Preenchimento das tabelas do banco de dados com estatísticas das temporadas reg
 Formatação do painel de corpo de requisição e do painel de resposta em JSON.
 
 * Como solucionar:
-  Usando o objeto document, foi possível ober o conteúdo do input de rota para formatar o corpo da requisição em json (se necessário), além de exibir a resposta com a identação apropriada.
+  Usando o objeto document, foi possível obter o conteúdo do input de rota para formatar o corpo da requisição em json (se necessário), além de exibir a resposta com a indentação apropriada.
 - No arquivo formSetUp.js (public/scripts/), o método  ```setUpBodyReqInput()```  analisa a rota no campo de entrada, e realiza as formatações para cada caso específico:
      
   ```js
