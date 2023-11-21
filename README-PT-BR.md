@@ -261,7 +261,7 @@ Formatação do painel de corpo de requisição e do painel de resposta em JSON.
 
 * Como solucionar:
   Usando o objeto document, foi possível obter o conteúdo do input de rota para formatar o corpo da requisição em json (se necessário), além de exibir a resposta com a indentação apropriada.
-- No arquivo formSetUp.js (public/scripts/), o método  ```setUpBodyReqInput()```  analisa a rota no campo de entrada, e realiza as formatações para cada caso específico:
+- No arquivo formSetUp.js (public/scripts/), o método  ```setUpBodyReqInput()```  analisa a rota no campo de entrada e realiza as formatações para cada caso específico:
      
   ```js
      if (HTTPMethod == "POST") {
@@ -309,7 +309,7 @@ A formatação para os outros tipos de método HTTP é similar ao trecho de cód
 SQL query de 2 tabelas para exibir estatísticas de cada jogador corretamente.
 
 * Como solucionar:
-  Usando INNER JOIN entre as tabelas ```playerstats``` e ```team``` para obter as estatísticas do jogador, e o nome time com base no id do jogador e ano de temporada regular
+  Usando INNER JOIN entre as tabelas ```playerstats``` e ```team``` para obter as estatísticas do jogador, o nome time com base no id do jogador e ano de temporada regular
   ```sql
       SELECT playerstats.Year,
       team.Name AS Team,
