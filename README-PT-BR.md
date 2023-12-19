@@ -100,8 +100,10 @@ USER = "yourUser"
 PASSWORD = "yourPassword"
 ```
 
-3. Ainda no seu editor, execute o seguinte comando no terminal
-
+3. Ainda no seu editor, execute os seguintes comandos no terminal
+```
+npm install
+```
 ```
 npm run start
 ```
